@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Film Selector</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Film Selector</h1>
+    <div class= "table"> 
+      <label for="genre">Genre:</label>
+      <select id=genre>
+        <option value="action">Action</option>
+        <option value="comedy">Comedy</option>
+        <option value="romance">Romance</option>
+        <option value="horror">Horror</option>
+        <option value="family">Family</option>
+      </select>
+    </div>
+    <div class= "table"> 
+      <label for="decade">Decade:</label>
+      <select id=decade>
+        <option value="1980s">1980s</option>
+        <option value="1990s">1990s</option>
+        <option value="2000s">2000s</option>
+        <option value="2010s">2010s</option>
+        <option value="2020s">2020s</option>
+      </select>
+    </div>
+    <div class= "table"> 
+      <label for="runtime">Runtime:</label>
+      <select id=runtime>
+        <option value="short">Less than 100mins</option>
+        <option value="long">More than 100mins</option>
+      </select>
+    </div>
+    <button onclick="chooseFilm()">Find a Film</button> 
+    <div id="result"></div>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+</html>
