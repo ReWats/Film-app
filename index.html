@@ -9,38 +9,20 @@
   <title>Film Selector</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Film Selector</h1>
-    <div class= "table"> 
-      <label for="genre">Genre:</label>
-      <select id=genre>
-        <option value="action">Action</option>
-        <option value="comedy">Comedy</option>
-        <option value="romance">Romance</option>
-        <option value="horror">Horror</option>
-        <option value="family">Family</option>
-      </select>
-    </div>
-    <div class= "table"> 
-      <label for="decade">Decade:</label>
-      <select id=decade>
-        <option value="1980s">1980s</option>
-        <option value="1990s">1990s</option>
-        <option value="2000s">2000s</option>
-        <option value="2010s">2010s</option>
-        <option value="2020s">2020s</option>
-      </select>
-    </div>
-    <div class= "table"> 
-      <label for="runtime">Runtime:</label>
-      <select id=runtime>
-        <option value="short">Less than 100mins</option>
-        <option value="long">More than 100mins</option>
-      </select>
-    </div>
-    <button onclick="chooseFilm()">Find a Film</button> 
-    <div id="result"></div>
+ <div class="container-surprise">
+<button id="surpriseMeButton" onclick="randomMovies()">Surprise Me!</button>
+</div>
+<div id="surpriseMe"></div>
   </div>
-  
+  <div class="my-list">
+<h2>Saved for Later</h2>
+  </div>
+<div id="savedMovies"><p></p>
+</div>
+  <div class="share">
+  <button id="shareButton" onclick="shareList()">Share My List</button>
+  </div>
+
+
 </body>
 </html>
