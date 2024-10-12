@@ -1,143 +1,117 @@
-const films = {
-  action: {
-    "1980s": {
-      short: ["Die Hard", "Running Man"],
-      long: ["Apocolypse Now", "Total Recall"]
-    },
-    "1990s": {
-      short: ["Speed", "True Lies"],
-      long: ["The Green Mile", "Mission Impossible"]
-    },
-    "2000s": {
-      short: ["The Fast and Furious", "Gone in 60 Seconds"],
-      long: ["The Matrix 2", "Mission Impossible 2"]
-    },
-    "2010s": {
-      short: ["Salt", "Red"],
-      long: ["Now You See Me", "Out of Time"]
-    },
-    "2020s": {
-      short: ["Mad Max Furiosa", "The Old Guard"],
-      long: ["Top Gun Maverick", "The Joker 2"]
-    },
-    comedy: {
-      "1980s": {
-        short: ["Ferris Bueller's Day Off", "The Goonies"],
-        long: ["When Harry Met Sally", "Mystic Pizza"]
-      },
-      "1990s": {
-        short: ["Death Becomes Her", "The Witches"],
-        long: ["White Men Can't Jump", "Coneheads"]
-      },
-      "2000s": {
-        short: ["Click", "Idiocracy"],
-        long: ["Hitchhikers Guide to the Galaxy", "Hancock"]
-      },
-      "2010s": {
-        short: ["Identity Thief", "Tag"],
-        long: ["Hail Cesar", "Chef"]
-      },
-       "2020s": {
-        short: ["My Spy", "Freaky"],
-        long: ["An American Pickle", "The King of Staten Island"]
-      }, 
-      romance: {
-      "1980s": {
-        short: ["Pretty in Pink", "An Officer and a Gentleman"],
-        long: ["Some Kind Of Wonderful", "A Room With a View"]
-      },
-      "1990s": {
-        short: ["Pretty Woman", "Before Sunrise"],
-        long: ["Sleepless in Seattle", "The Bodyguard"]
-      },
-      "2000s": {
-        short: ["The Proposal", "PS, I Love You"],
-        long: ["The Notebook", "Moulin Rouge"]
-      },
-      "2010s": {
-        short: ["Crazy Stupid Love", "Her"],
-        long: ["A Star is Born", "The Age of Adeline"]
-      },
-       "2020s": {
-        short: ["Anyone But You", "Emma"],
-        long: ["Holidate", "The Idea of You"]
-      }, 
-       horror: {
-      "1980s": {
-        short: ["Friday 13th", "Halloween"],
-        long: ["A Nightmare on Elm Street", "The Thing"]
-      },
-      "1990s": {
-        short: ["Scream", "Sleepy Hollow"],
-        long: ["Misery", "The Silence of The Lambs"]
-      },
-      "2000s": {
-        short: ["Saw", "Hostel"],
-        long: ["American Psycho", "Jennifer's Body"]
-      },
-      "2010s": {
-        short: ["The Babadook", "The Conjuring"],
-        long: ["It", "Hereditary"]
-      },
-       "2020s": {
-        short: ["Relic", "Host"],
-        long: ["The Dark and the Wicked", "The Empty Man"]
-      }, 
-       family: {
-      "1980s": {
-        short: ["Goonies", "Beethoven"],
-        long: ["Honey, I Shrunk the Kids", "E.T. The Extra Terrestrial"]
-      },
-      "1990s": {
-        short: ["My Girl", "Corrina Corrina"],
-        long: ["Matilda", "The Parent Trap"]
-      },
-      "2000s": {
-        short: ["Shark Tail", "Ratatouille"],
-        long: ["Shrek", "Bridge to Taribitha"]
-      },
-      "2010s": {
-        short: ["Moana", "Wreck it Ralph"],
-        long: ["Paddington", "Tangled"]
-      },
-       "2020s": {
-        short: ["If", "Onward"],
-        long: ["The Call of the Wild", "The Witches"]
-      }, 
-    }
-    }
-    }
-    }
-  }
-};
-       
-   
-   
-         
-   function chooseFilm() {
-        const genre = document.getElementById('genre').value;
-        const decade = document.getElementById('decade').value;
-        const runtime = document.getElementById('runtime').value;
-     
-        const resultBar = document.getElementById('result');
-      
+//Create array to store a database of our movies
+const movies = [
+  "Die Hard",
+  "Speed",
+  "The Fast and The Furious",
+  "Salt",
+  "Top Gun Maverick",
+  "Gremlins",
+  "Dracula",
+  "Trick or Treat",
+  "The Cabin in the Woods",
+  "The Dark and the Wicked",
+  "E.T. the Extra Terrestrial",
+  "Who Framed Roger Rabbit",
+  "The Lion King",
+  "Toy Story",
+  "Spirited Away",
+  "Harry Potter and the Goblet of Fire",
+  "Howl's Moving Castle",
+  "WALL.E",
+  "Speder-Man Into the Spider-Verse",
+  "Inside Out 2",
+  "A Room With a View",
+  "Titanic",
+  "Pride and Prejudice",
+  "About Time",
+  "The Idea of You",
+  "Zoolander",
+  "21 Jump Street",
+  "Mrs Doubtfire",
+  "Beverly Hills Cop",
+  "Ace Ventura: Pet Detective"
+];
 
-try {
-  const filmOptions = films[genre][decade][runtime];
-  if filmOptions && filmOptions.length > 0)
-  
-  const randomFilm = filmOptions[math.floor(math.random() * filmOptions.length)];
-  resultBar.innerHTML = `<h3>Your Recommendation:</h3><p>${randomFilm}</p>`;
-  
-} else {
-  
-  resultBar.innerHTML = "No Matches!";
+//Create a seperate array to store our saved movies 
+let savedMovies = []; 
+
+//onClick event added to "surprise me" button in HTML to call the function
+function randomMovies() {
+  const movieList = document.getElementById("surpriseMe");
+  movieList.innerHTML = ""; 
+
+//Get 3 random movies from the list
+  const randomMovies = getRandomMovies(3); 
+
+//Iterate over the list using forEach
+  randomMovies.forEach(film => {
+    const listItem = document.createElement("p");
+    listItem.textContent = film;
+
+//Create a "Save" button for each movie that we have recommended
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "Save for Later";
+    saveButton.onclick = () => saveMovie(film);
+
+    listItem.appendChild(saveButton);
+    movieList.appendChild(listItem);
+  });
 }
-   catch (error) {
-     
-  resultBar.innerHTML = "No Matches!";
-  
-   }
 
-   resultBar.style.display= 'block';
+//Function to get random movies
+function getRandomMovies(count) {
+  const randomMovies = [];
+  const movieCopy = movies.slice();
+
+//Loop until we have the desired number of random movies
+  while (randomMovies.length < count) {
+    const randomIndex = Math.floor(Math.random() * movieCopy.length);
+    const pickedMovie = movieCopy.splice(randomIndex, 1)[0];
+    
+    randomMovies.push(pickedMovie);
+  }
+  
+//Return the array of random movies on the webpage
+  return randomMovies; 
+}
+
+//Function to save a movie
+function saveMovie(movie) {
+  if (!savedMovies.includes(movie)) {
+    savedMovies.push(movie); 
+//Add movie to saved list
+    updateSavedMoviesList();
+  } else {
+//Give an alert if user tries to add same movie twice,tried using blurt for something better looking but couldn't get the external css + js to work in codepen
+    alert(`${movie} is already in your saved list.`);
+  }
+}
+
+//Function to update the saved movies display
+function updateSavedMoviesList() {
+  const savedList = document.getElementById("savedMovies");
+  savedList.innerHTML = ""; 
+
+//Create a list of the saved movies  
+  savedMovies.forEach(movie => {
+    const listItem = document.createElement("p");
+    listItem.textContent = movie;
+    savedList.appendChild(listItem);
+  });
+}
+
+//Enable the share button (tried to have the button set as disabled if 0 entries but wouldn't enabled for some reason when entries were added to list)
+  document.getElementById("shareButton").enabled = savedMovies.length === 0;
+
+//User receives an alert if they try to share a list with no entries
+function shareList() {
+  if (savedMovies.length === 0) {
+    alert("You have no saved movies to share.");
+  }
+
+ //Define what will be in the alert; 
+  const shareText = `Check out my saved movies! ${savedMovies.join(", ")}`;
+  
+//run the alert and display movies in the users list
+    alert(shareText);
 }
